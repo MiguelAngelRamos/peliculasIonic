@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
+  // localhost:8100/tabs/tab1
+  // localhost:8100/tabs/tab2  
+  // localhost:8100/tabs/tab3 
+
   {
     path: 'tabs',
     component: TabsPage,
