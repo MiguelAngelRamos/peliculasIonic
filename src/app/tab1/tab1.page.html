@@ -20,6 +20,14 @@
   </ion-grid>
  
   <app-slidesshow-poster [moviesPosters]="recentMovies"></app-slidesshow-poster>
-  
 
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h3>Popularity Movies</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <app-slidesshow-popularity [moviePopularity]="popularity"></app-slidesshow-popularity>
 </ion-content>

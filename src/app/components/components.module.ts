@@ -4,13 +4,15 @@ import { SlidesshowPosterComponent } from './slidesshow-poster/slidesshow-poster
 import { SlidesshowBackdropComponent } from './slidesshow-backdrop/slidesshow-backdrop.component';
 import { IonicModule } from '@ionic/angular';
 import { PipesModule } from '../pipes/pipes.module';
+import { SlidesshowPopularityComponent } from './slidesshow-popularity/slidesshow-popularity.component';
 
 
 
 @NgModule({
   declarations: [
     SlidesshowPosterComponent,
-    SlidesshowBackdropComponent
+    SlidesshowBackdropComponent,
+    SlidesshowPopularityComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { PipesModule } from '../pipes/pipes.module';
   ],
   exports: [
     SlidesshowPosterComponent,
-    SlidesshowBackdropComponent
+    SlidesshowBackdropComponent,
+    SlidesshowPopularityComponent
   ]
 })
 export class ComponentsModule { }

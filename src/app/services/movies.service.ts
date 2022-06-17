@@ -18,7 +18,7 @@ export class MoviesService {
     query = query + `&api_key=${apiKey}&language=es&include_image_language=es`;
     return this.httpClient.get<T>(query);
   }
-
+  // Las peliculas por rango de fecha
   getMovies() {
     const diaHoy = new Date();
     // los meses en javascript comienzan desde 0 (ENERO SERIA EL MES 0)
@@ -42,5 +42,12 @@ export class MoviesService {
 
     return this.runQuery<ResponseMDB>(`/discover/movie?primary_release_date.gte=${inicio}&primary_release_date.lte=${fin}`)
     // alt + 96 ``
+  }
+
+  // Las peliculas Populares
+
+  getPopulares() {
+    const query = '/discover/movie?sort_by=popularity'; // asc
+    return this.runQuery<ResponseMDB>(query);
   }
 }
