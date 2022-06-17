@@ -12,7 +12,9 @@ const apiKey = environment.apiKey;
 export class MoviesService {
 
   constructor( private httpClient: HttpClient) { }
-  
+
+  private contadorPage: number = 0;
+
   private runQuery<T>(query: string) {
     query =  URL + query;
     query = query + `&api_key=${apiKey}&language=es&include_image_language=es`;
@@ -47,7 +49,9 @@ export class MoviesService {
   // Las peliculas Populares
 
   getPopulares() {
-    const query = '/discover/movie?sort_by=popularity'; // asc
+   // this.contadorPage = this.contadorPage + 1;
+   this.contadorPage++;
+    const query = `/discover/movie?sort_by=popularity&page=${this.contadorPage}`; // asc
     return this.runQuery<ResponseMDB>(query);
   }
 }

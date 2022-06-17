@@ -1,4 +1,5 @@
 <ion-slides [options]="slideOpts">
+
   <ion-slide *ngFor="let paresPopulares of moviePopularity | popular">
     <ion-row>
       <ion-col size="12" *ngFor="let peliculaPopular of paresPopulares">
@@ -8,4 +9,16 @@
       </ion-col>
     </ion-row>
   </ion-slide>
+
+  <ion-slide class="slide-add">
+    <ion-button 
+      class="btn-add" 
+      color="success"
+      expand="full"
+      (click)="onClick()"
+    >
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+  </ion-slide>
+
 </ion-slides>

@@ -11,6 +11,7 @@ export class Tab1Page implements OnInit{
   
   recentMovies: Movie[] = [];
   popularity: Movie[] = []; // la informacion que pasaremos al hijo
+
   constructor( private movieService: MoviesService) {}
 
   ngOnInit(): void {
@@ -20,10 +21,20 @@ export class Tab1Page implements OnInit{
       this.recentMovies = response.results;
     });
 
+    this.getMoviePopularity();
+  }
+
+  getMoviePopularity() {
     this.movieService.getPopulares().subscribe( response => {
       console.log('Movies Popularity', response.results);
-      this.popularity = response.results;
+      const arrayTemp = [...this.popularity, ...response.results];
+      this.popularity = arrayTemp;
     })
+  }
+
+  // método compartido
+  addLoading() {
+    this.getMoviePopularity();
   }
 
 }

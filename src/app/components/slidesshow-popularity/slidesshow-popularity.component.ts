@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Movie } from 'src/app/interfaces/interfacesMDB';
 
 @Component({
@@ -9,6 +9,7 @@ import { Movie } from 'src/app/interfaces/interfacesMDB';
 export class SlidesshowPopularityComponent implements OnInit {
 
   @Input() moviePopularity: Movie[];
+  @Output() cargarPopulares = new EventEmitter();
 
   slideOpts = {
     slidesPerView: 3.3
@@ -17,6 +18,11 @@ export class SlidesshowPopularityComponent implements OnInit {
 
   ngOnInit() {
  
+  }
+
+  onClick() {
+    console.log('Boton para traer mas peliculas populares')
+    this.cargarPopulares.emit();
   }
 
 }

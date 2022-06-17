@@ -29,5 +29,9 @@
     </ion-row>
   </ion-grid>
   
-  <app-slidesshow-popularity [moviePopularity]="popularity"></app-slidesshow-popularity>
+  <app-slidesshow-popularity 
+   [moviePopularity]="popularity"
+   (cargarPopulares)="addLoading()"
+  >
+</app-slidesshow-popularity>
 </ion-content>
