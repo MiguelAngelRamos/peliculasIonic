@@ -1,9 +1,9 @@
 <ion-slides [options]="slideOpts">
-  <ion-slide *ngFor="let popularity of moviePopularity">
-    <ion-row >
-      <ion-col size="12" >
+  <ion-slide *ngFor="let paresPopulares of moviePopularity | popular">
+    <ion-row>
+      <ion-col size="12" *ngFor="let peliculaPopular of paresPopulares">
         <ion-card>
-          <img class="poster" [src]="popularity.poster_path | image " alt="peliculas populares">
+          <img class="poster" [src]="peliculaPopular.poster_path | image " alt="peliculas populares">
         </ion-card>
       </ion-col>
     </ion-row>

@@ -15,6 +15,8 @@ export class SlidesshowPopularityComponent implements OnInit {
   }
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+ 
+  }
 
 }
