@@ -8,15 +8,18 @@
     </ion-row>
   </ion-grid>
   
-  <!-- <ion-slides>
-    <ion-slide *ngFor="let rmovie of recentMovies">
-      <ion-card>
+  <app-slidesshow-backdrop [recentMoviesChildren]="recentMovies"></app-slidesshow-backdrop>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h3>Recent Movies</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+  <app-slidesshow-poster [moviesPosters]="recentMovies"></app-slidesshow-poster>
   
-        <img [src]="rmovie.backdrop_path | image">
-        
-      </ion-card>
-  </ion-slide>
-  
-  </ion-slides> -->
 
 </ion-content>

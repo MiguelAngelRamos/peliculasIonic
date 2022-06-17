@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Movie } from 'src/app/interfaces/interfacesMDB';
 
 @Component({
   selector: 'app-slidesshow-poster',
@@ -7,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SlidesshowPosterComponent implements OnInit {
 
+  @Input() moviesPosters: Movie[];
+
+  slideOpts = {
+    slidesPerView:3.2,
+  }
   constructor() { }
 
   ngOnInit() {}

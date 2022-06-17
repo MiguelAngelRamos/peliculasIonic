@@ -8,7 +8,7 @@ import { Movie } from 'src/app/interfaces/interfacesMDB';
 })
 export class SlidesshowBackdropComponent implements OnInit {
 
-  @Input() recentMovies: Movie[];
+  @Input() recentMoviesChildren: Movie[];
   constructor() { }
 
   ngOnInit() {}
