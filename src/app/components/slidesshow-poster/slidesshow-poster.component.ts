@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Movie } from 'src/app/interfaces/interfacesMDB';
+import { DetailModalComponent } from '../detail-modal/detail-modal.component';
 
 @Component({
   selector: 'app-slidesshow-poster',
@@ -13,8 +15,18 @@ export class SlidesshowPosterComponent implements OnInit {
   slideOpts = {
     slidesPerView:3.2,
   }
-  constructor() { }
+  constructor( private modalController: ModalController) { }
 
   ngOnInit() {}
+
+  async getDetailModal(id: number) {
+    const modal = await this.modalController.create({
+      component: DetailModalComponent,
+      componentProps: {
+        id: id // es esto lo que recibe el input que vamos a crear en el DetailModalComponent
+      }
+    });
+    modal.present();
+  }
 
 }

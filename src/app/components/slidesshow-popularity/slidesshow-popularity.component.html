@@ -3,9 +3,11 @@
   <ion-slide *ngFor="let paresPopulares of moviePopularity | popular">
     <ion-row>
       <ion-col size="12" *ngFor="let peliculaPopular of paresPopulares">
-        <ion-card>
+
+        <ion-card (click)="getDetailModal(peliculaPopular.id)">
           <img class="poster" [src]="peliculaPopular.poster_path | image " alt="peliculas populares">
         </ion-card>
+        
       </ion-col>
     </ion-row>
   </ion-slide>
