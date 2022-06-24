@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ResponseMDB } from '../interfaces/interfacesMDB';
+import { IMovieDetails, ResponseMDB } from '../interfaces/interfacesMDB';
 
 const URL = environment.url;
 const apiKey = environment.apiKey;
@@ -18,8 +18,10 @@ export class MoviesService {
   private runQuery<T>(query: string) {
     query =  URL + query;
     query = query + `&api_key=${apiKey}&language=es&include_image_language=es`;
+    console.log(query);
     return this.httpClient.get<T>(query);
   }
+
   // Las peliculas por rango de fecha
   getMovies() {
     const diaHoy = new Date();
@@ -53,5 +55,15 @@ export class MoviesService {
    this.contadorPage++;
     const query = `/discover/movie?sort_by=popularity&page=${this.contadorPage}`; // asc
     return this.runQuery<ResponseMDB>(query);
+  }
+
+  getMovieDetail(id: number) {
+    return this.runQuery<IMovieDetails>(`/movie/${id}?a=1`);
+  }
+
+
+  // /movie/{movie_id}/credits
+  getActorsMovie(id: number) {
+    return this.runQuery<any>(`/movie/${id}/credits?a=1`);
   }
 }
