@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { IMovieDetails, ResponseMDB } from '../interfaces/interfacesMDB';
+import { IMovieDetails, IResponseCredits, ResponseMDB } from '../interfaces/interfacesMDB';
 
 const URL = environment.url;
 const apiKey = environment.apiKey;
@@ -64,6 +64,6 @@ export class MoviesService {
 
   // /movie/{movie_id}/credits
   getActorsMovie(id: number) {
-    return this.runQuery<any>(`/movie/${id}/credits?a=1`);
+    return this.runQuery<IResponseCredits>(`/movie/${id}/credits?a=1`);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
+import { IMovieDetails } from '../../interfaces/interfacesMDB';
 
 @Component({
   selector: 'app-detail-modal',
@@ -9,7 +10,7 @@ import { MoviesService } from '../../services/movies.service';
 export class DetailModalComponent implements OnInit {
 
   @Input() id: number;
-
+  public movie: IMovieDetails;
   constructor(private movieService: MoviesService ) { }
 
   ngOnInit() {
@@ -18,6 +19,7 @@ export class DetailModalComponent implements OnInit {
     this.movieService.getMovieDetail(this.id)
                      .subscribe(response => {
                       console.log(response);
+                      this.movie = response;
                      });
 
    //* Los actores
