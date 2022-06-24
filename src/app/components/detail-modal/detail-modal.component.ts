@@ -10,7 +10,7 @@ import { IMovieDetails } from '../../interfaces/interfacesMDB';
 export class DetailModalComponent implements OnInit {
 
   @Input() id: number;
-  public movie: IMovieDetails;
+  movie: IMovieDetails;
   constructor(private movieService: MoviesService ) { }
 
   ngOnInit() {
