@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
-import { IMovieDetails } from '../../interfaces/interfacesMDB';
+import { ICast, IMovieDetails } from '../../interfaces/interfacesMDB';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detail-modal',
@@ -11,7 +12,14 @@ export class DetailModalComponent implements OnInit {
 
   @Input() id: number;
   movie: IMovieDetails;
-  constructor(private movieService: MoviesService ) { }
+  actors: ICast[] = [];
+  leerMas: number= 150;
+  slideOptActors = {
+    slidesPerView: 3.3,
+    freeMode: true
+  }
+  
+  constructor( private movieService: MoviesService, private modalCtrl: ModalController ) { }
 
   ngOnInit() {
     // console.log('El id es: ', this.id);
@@ -25,8 +33,13 @@ export class DetailModalComponent implements OnInit {
    //* Los actores
    this.movieService.getActorsMovie(this.id)
                     .subscribe(response => {
-                      console.log(response);
-                    })
+                      console.log(response.cast);
+                      this.actors = response.cast;
+                    });
+  }
+
+  regresar() {
+    this.modalCtrl.dismiss();
   }
 
 }
