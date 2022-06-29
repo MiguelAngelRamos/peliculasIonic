@@ -1,17 +1,46 @@
-<ion-header [translucent]="true">
+<!-- header -->
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title>Search Movie</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-toolbar>
+  <ion-searchbar
+    placeholder="Search Movie"
+    animated
+    debounce="600"
+    [value]="textSearch"
+    (ionChange)="search($event)"
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  ></ion-searchbar>
+</ion-toolbar>
+
+<!-- content  -->
+<ion-content>
+
+  <!-- CODIGO DEL SPINNER -->
+  <ion-grid *ngIf="spinner">
+    <ion-row>
+      <ion-col text-center>
+        <ion-spinner name="crescent" color="success">
+        </ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- /CODIGO DEL SPINNER -->
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>IDEAS</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let idea of ideas" 
+    (click)="textSearch=idea">
+      <ion-label color="success">{{ idea }}</ion-label>
+    </ion-item>
+ 
+
+  </ion-list>
+
 </ion-content>

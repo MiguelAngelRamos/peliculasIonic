@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IMovieDetails, IResponseCredits, ResponseMDB } from '../interfaces/interfacesMDB';
+import { ISearchMovie } from '../interfaces/ISearch';
 
 const URL = environment.url;
 const apiKey = environment.apiKey;
@@ -18,7 +19,7 @@ export class MoviesService {
   private runQuery<T>(query: string) {
     query =  URL + query;
     query = query + `&api_key=${apiKey}&language=es&include_image_language=es`;
-    console.log(query);
+    console.log(query); // podemos observar la URL QUE SE CONSTRUYE
     return this.httpClient.get<T>(query);
   }
 
@@ -65,5 +66,11 @@ export class MoviesService {
   // /movie/{movie_id}/credits
   getActorsMovie(id: number) {
     return this.runQuery<IResponseCredits>(`/movie/${id}/credits?a=1`);
+  }
+
+  // Para buscar Peliculas
+
+  searchMovies(text: string) {
+    return this.runQuery<ISearchMovie>(`/search/movie?query=${text}`);
   }
 }
