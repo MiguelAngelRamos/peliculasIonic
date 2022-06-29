@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Movie } from 'src/app/interfaces/interfacesMDB';
 import { DetailModalComponent } from '../detail-modal/detail-modal.component';
+import { IMovieDetails } from '../../interfaces/interfacesMDB';
 
 @Component({
   selector: 'app-slidesshow-poster',
@@ -10,7 +11,7 @@ import { DetailModalComponent } from '../detail-modal/detail-modal.component';
 })
 export class SlidesshowPosterComponent implements OnInit {
 
-  @Input() moviesPosters: Movie[];
+  @Input() moviesPosters: IMovieDetails[];
 
   slideOpts = {
     slidesPerView:3.2,

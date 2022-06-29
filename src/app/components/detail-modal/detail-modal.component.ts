@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { ICast, IMovieDetails } from '../../interfaces/interfacesMDB';
 import { ModalController } from '@ionic/angular';
+import { LocalDbService } from '../../services/local-db.service';
 
 @Component({
   selector: 'app-detail-modal',
@@ -11,15 +12,19 @@ import { ModalController } from '@ionic/angular';
 export class DetailModalComponent implements OnInit {
 
   @Input() id: number;
+
   movie: IMovieDetails;
   actors: ICast[] = [];
   leerMas: number= 150;
+  iconStar: string = 'star-outline';
   slideOptActors = {
     slidesPerView: 3.3,
     freeMode: true
   }
   
-  constructor( private movieService: MoviesService, private modalCtrl: ModalController ) { }
+  constructor( private movieService: MoviesService, 
+               private modalCtrl: ModalController,
+               private localDbService: LocalDbService ) { }
 
   ngOnInit() {
     // console.log('El id es: ', this.id);
@@ -40,6 +45,11 @@ export class DetailModalComponent implements OnInit {
 
   regresar() {
     this.modalCtrl.dismiss();
+  }
+
+  favoriteMovies() {
+    const existe = this.localDbService.saveMovie(this.movie);
+    this.iconStar = (existe)? 'star': 'star-outline';
   }
 
 }

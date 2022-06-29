@@ -80,9 +80,9 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="favoriteMovies()">
         <ion-label>Favoritos</ion-label>
-        <ion-icon slot="start" name="star-outline"></ion-icon>
+        <ion-icon slot="start" [name]="iconStar"></ion-icon>
       </ion-button>
     </ion-buttons>
 

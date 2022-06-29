@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces/interfacesMDB';
 import { MoviesService } from '../services/movies.service';
+import { ModalController } from '@ionic/angular';
+import { DetailModalComponent } from '../components/detail-modal/detail-modal.component';
 
 @Component({
   selector: 'app-tab2',
@@ -23,7 +25,7 @@ export class Tab2Page {
 
   public spinner: boolean = false;
 
-  constructor( private movieService: MoviesService ) {}
+  constructor( private movieService: MoviesService, private modalController: ModalController) {}
 
   public search(event) {
     // console.log(event.detail.value);
@@ -34,17 +36,23 @@ export class Tab2Page {
       this.movies = [];
       return; // para que no se siga ejecutando el código
     }
-
     this.spinner = true;
-    console.log(value);
-
     this.movieService.searchMovies(value).subscribe( response => {
       console.log(response.results); // es un Arreglo
       this.movies = response.results;
       this.spinner = false;
+    }); 
+  }
+
+  public async details(id: number) {
+    const modal = await this.modalController.create({
+      component: DetailModalComponent,
+      componentProps: {
+        id:id // solo id
+      }
     });
 
-    
+    modal.present();
   }
 
 }
